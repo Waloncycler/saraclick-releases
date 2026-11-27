@@ -2,9 +2,11 @@
 
 SaraClick 负责账号、发布队列和回执；你的 Agent 使用自己的模型生成素材。先启动 SaraClick，并在「账号与连接」完成扩展配对、账号登录和身份核对。
 
+具体客户端的配置位置、JSON/TOML 格式及小红书、Instagram 的验收记录见 [Claude、Codex、Antigravity 接入说明](AGENT_CLIENTS.md)。1.5.1 接入页可直接选择客户端并下载配置。每个客户端独立授权，各自查询自己的任务。
+
 ## 连接 MCP
 
-在「账号与连接」创建 Agent 授权，选择账号、内容格式、草稿/预填/自动发布权限、24 小时额度和到期时间。复制只显示一次的 MCP 配置到你的 Agent 客户端。配置中已有本机可执行文件路径、凭据和素材目录；不同电脑的路径与凭据不同，不要共用。
+在「账号与连接」创建 Agent 授权，选择账号、内容格式、草稿/预填/自动发布权限、24 小时额度和到期时间。选择对应客户端，复制或下载只显示一次的 MCP 配置到自己的私有配置。配置中已有本机可执行文件路径、凭据和素材目录；不同电脑的路径与凭据不同，不要共用。
 
 MCP 客户端需支持本机 stdio 服务。安装包已经包含 saraclick-mcp，无需另装 Python 或 Node。远端大模型通过本机 Agent 客户端使用此工具。
 
@@ -47,7 +49,7 @@ format 支持 DYNAMIC、ARTICLE、VIDEO、PODCAST，实际可用范围以 capabi
 
 ## HTTP 接口
 
-本机地址：`http://127.0.0.1:8088/api/agent/v1`。携带 `Authorization: Bearer <你的 Agent 凭据>`，写请求使用 application/json。不要将本机端口映射到公网。
+本机 REST API 地址：`http://127.0.0.1:8088/api/agent/v1`；它不是远程 MCP 地址，不应填入客户端的 MCP URL。携带 `Authorization: Bearer <你的 Agent 凭据>`，写请求使用 application/json。不要将本机端口映射到公网。
 
 | 请求 | 用途 |
 | --- | --- |
