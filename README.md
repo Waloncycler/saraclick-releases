@@ -12,6 +12,8 @@ SaraClick 让你在自己的电脑绑定社交账号，并连接自己的 AI Age
 | Mac M 系列 / Apple Silicon | macos-arm64（原生，不依赖 Rosetta） |
 | Intel Mac | macos-x64 |
 
+运行要求：macOS 13.5 或更高版本；Windows 10/11 x64。Mac 下限由随包运行时决定，参见 [Node 官方支持表](https://github.com/nodejs/node/blob/v24.x/BUILDING.md#platform-list)。本版没有 Windows ARM 原生包。
+
 ## 开始使用
 
 1. 下载匹配系统的 ZIP，并核对同版 SHA-256 文件。Windows 解压整个文件夹运行 SaraClick.exe；Mac 解压后把 SaraClick.app 放入「应用程序」。
