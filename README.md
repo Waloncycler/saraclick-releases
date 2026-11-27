@@ -4,7 +4,7 @@ SaraClick 让你在自己的电脑绑定社交账号，并连接自己的 AI Age
 
 此仓库只用于分发安装包及使用说明。产品源码保持私有，用户的账号、登录会话、凭据、历史任务和私人素材不会包含在安装包中。
 
-[查看可下载的版本](https://github.com/Waloncycler/saraclick-releases/releases)
+[下载当前候选 1.5.1 RC1](https://github.com/Waloncycler/saraclick-releases/releases/tag/v1.5.1-rc.1) · [全部版本](https://github.com/Waloncycler/saraclick-releases/releases)
 
 | 电脑 | 选择的包 |
 | --- | --- |
@@ -19,7 +19,7 @@ SaraClick 让你在自己的电脑绑定社交账号，并连接自己的 AI Age
 1. 下载匹配系统的 ZIP，并核对同版 SHA-256 文件。Windows 解压整个文件夹运行 SaraClick.exe；Mac 解压后把 SaraClick.app 放入「应用程序」。
 2. 启动应用，使用 Chrome 或 Edge 打开工作台。在应用中打开扩展目录，在浏览器扩展管理页开启开发者模式并「加载解压缩的扩展」。采用本地部署，无需应用商店。
 3. 在「账号与连接」连接发布扩展，添加并登录自己的社交账号，核对身份与发布设备。
-4. 创建 Agent 授权，选择账号、格式、权限、额度和有效期。复制一次性 MCP 配置到自己的 Agent，把生成素材放入配置指定目录。
+4. 创建 Agent 授权，选择账号、格式、权限、额度和有效期。选择 Claude Desktop / Claude Code、Codex 或 Antigravity，复制或下载对应的一次性配置，把生成素材放入指定目录。每个客户端单独授权。
 5. 先试待审核草稿，核对后按需启用自动发布。Agent 保存 request_id 并查询原任务；结果未知时继续核对，不能换编号重发。
 
 发布和排期执行期间请保持电脑唤醒、SaraClick 与浏览器运行。平台要求验证码或重新登录时，由账号主人处理。程序和 MCP 已打包，普通用户无需安装 Python 或 Node。
@@ -32,7 +32,7 @@ M 系列 Mac 选择 macos-arm64；Intel Mac 选择 macos-x64。先将应用放�
 
 ## Agent 接入
 
-[接入和结果处理说明](AGENT_GUIDE.md)。Agent 可使用打包的 MCP，也可调用本机 HTTP API。模型和生成素材由你的 Agent 管理。当前接口接收的单个文件最多 20 MiB，大视频需先压缩；远端模型通过本机 Agent 客户端连接，不需要将本机端口暴露到公网。
+[Claude、Codex、Antigravity 配置与验收](AGENT_CLIENTS.md) · [接口和结果处理说明](AGENT_GUIDE.md)。Agent 可使用打包的 MCP，也可调用本机 HTTP API。模型和生成素材由你的 Agent 管理。当前接口接收的单个文件最多 20 MiB，大视频需先压缩；远端模型通过本机 Agent 客户端连接，不需要将本机端口暴露到公网。
 
 ## 数据和更新
 
