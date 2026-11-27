@@ -1,2 +1,29 @@
-# saraclick-releases
-SaraClick local installation packages for Windows, Apple Silicon Mac and Intel Mac. Application source remains private.
+# SaraClick 本地部署包
+
+SaraClick 让你在自己的电脑绑定社交账号，并连接自己的 AI Agent：生成素材 → 上传到 SaraClick → 排期或发布 → 查询原任务结果。
+
+此仓库只用于分发安装包及使用说明。产品源码保持私有，用户的账号、登录会话、凭据、历史任务和私人素材不会包含在安装包中。
+
+[查看可下载的版本](https://github.com/Waloncycler/saraclick-releases/releases)
+
+| 电脑 | 选择的包 |
+| --- | --- |
+| Windows 64 位（Intel/AMD） | windows-x64 |
+| Mac M 系列 / Apple Silicon | macos-arm64（原生，不依赖 Rosetta） |
+| Intel Mac | macos-x64 |
+
+## 开始使用
+
+1. 下载匹配系统的 ZIP，并核对同版 SHA-256 文件。Windows 解压整个文件夹运行 SaraClick.exe；Mac 解压后把 SaraClick.app 放入「应用程序」。
+2. 启动应用，使用 Chrome 或 Edge 打开工作台。在应用中打开扩展目录，在浏览器扩展管理页开启开发者模式并「加载解压缩的扩展」。采用本地部署，无需应用商店。
+3. 在「账号与连接」连接发布扩展，添加并登录自己的社交账号，核对身份与发布设备。
+4. 创建 Agent 授权，选择账号、格式、权限、额度和有效期。复制一次性 MCP 配置到自己的 Agent，把生成素材放入配置指定目录。
+5. 先试待审核草稿，核对后按需启用自动发布。Agent 保存 request_id 并查询原任务；结果未知时继续核对，不能换编号重发。
+
+发布和排期执行期间请保持电脑唤醒、SaraClick 与浏览器运行。平台要求验证码或重新登录时，由账号主人处理。程序和 MCP 已打包，普通用户无需安装 Python 或 Node。
+
+## 数据和更新
+
+Windows 数据目录：`%LOCALAPPDATA%/SaraClick`；Mac：`~/Library/Application Support/SaraClick`。升级前退出程序并备份自己的目录，再替换应用，重新加载原扩展。不要给其他用户复制自己的数据目录或浏览器 profile。
+
+本地部署包当前未使用发布者证书，首次打开可能出现操作系统确认提示。不同平台的真实发布验收范围和已知限制以具体 Release 说明为准；自动化构建通过不等于所有社交平台均已完成真实发帖验证。
