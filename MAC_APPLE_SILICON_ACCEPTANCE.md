@@ -1,11 +1,11 @@
 # M 芯片 Mac：首次安装与真实验收
 
-适用于 SaraClick 1.5.0 RC1、另一台 Apple Silicon Mac。本文是待执行的验收步骤，不是已完成的实机结果。
+适用于 SaraClick 1.5.1 RC1、另一台 Apple Silicon Mac。本轮使用 Claude、Codex、Antigravity，先验证小红书和 Instagram。本文是待执行的验收步骤，不是已完成的实机结果。
 
 ## 1. 安装与打开
 
 1. 在「关于本机」确认芯片为 Apple M 系列，macOS 为 13.5 或以上。使用已安装的 Chrome 或 Microsoft Edge。
-2. 下载 [macos-arm64 安装包](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.0-rc.1/SaraClick-1.5.0-macos-arm64.zip) 及 [SHA-256 校验文件](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.0-rc.1/SaraClick-1.5.0-macos-arm64.zip.sha256)。包摘要：`dea72d6545b1cf5a4670efbf500740257793717a95fe740837cc36c9e21dfa7d`。
+2. 下载 [macos-arm64 安装包](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.1-rc.1/SaraClick-1.5.1-macos-arm64.zip) 及 [SHA-256 校验文件](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.1-rc.1/SaraClick-1.5.1-macos-arm64.zip.sha256)。包摘要：`c8eef3bc73055e9791dc157d8083f95ca1a8f6ee509b48ebf73003d922137864`。
 3. 解压，将 SaraClick.app 拖进「应用程序」再打开。应用、Node 与 MCP 都是 arm64 原生，无需 Rosetta、Python 或 Node 安装。
 4. 候选包未公证。如提示无法验证开发者，核对来源后按 [Apple 官方说明](https://support.apple.com/en-us/102445)，在「系统设置 → 隐私与安全性」为此应用选择「仍要打开」。记录遇到的提示；受管理电脑可能需要管理员处理。
 5. 在 SaraClick 窗口选择 Chrome 或 Edge，点击「打开工作台」。全新安装应看到空账号列表，而不是他人的账号或任务。
@@ -17,15 +17,15 @@
 ## 2. 加载扩展并绑定自己的账号
 
 1. 在 SaraClick 点击「打开扩展安装目录」。
-2. 在同一个浏览器打开 `chrome://extensions/` 或 `edge://extensions/`，开启开发者模式，加载刚打开的目录。确认扩展版本为 1.5.0。
-3. 返回工作台「账号与连接」，连接发布扩展，添加一个本次要测试的社交账号。
+2. 在同一个浏览器打开 `chrome://extensions/` 或 `edge://extensions/`，开启开发者模式，加载刚打开的目录。确认扩展版本为 1.5.1。
+3. 返回工作台「账号与连接」，连接发布扩展，分别添加机主自己的小红书和 Instagram 账号。
 4. 由账号主人在平台页面完成登录和必要验证，再回到 SaraClick 核对账号身份及发布设备。
 
 通过标准：扩展已连接，目标账号的稳定身份已核实并属于机主，设备匹配。仅看到昵称、已登录页面或已安装扩展不算完成绑定。
 
 ## 3. 连接自己的 Agent，先做只读检查
 
-在「连接自己的 AI Agent」创建测试授权：选本次账号、图文格式，仅勾选「创建待审核草稿」，测试额度可设为 3、有效期 1 天。确认后点击「创建 Agent 连接」，将一次性配置保存到自己 Agent 的私有配置。
+在「连接自己的 AI Agent」创建测试授权：选本次账号、图文格式，仅勾选「创建待审核草稿」，测试额度可设为 3、有效期 1 天。确认后点击「创建 Agent 连接」，选择对应客户端，将一次性配置保存到自己 Agent 的私有配置。Claude（Desktop/Code）、Codex 和 Antigravity 分别创建授权，具体步骤见 [客户端接入说明](AGENT_CLIENTS.md)。三种客户端均先做本节只读检查和下一节草稿检查。
 
 配置中的 command、args 和环境变量取自这台 Mac。不同 Agent 客户端的配置文件格式可能不同，应按实际客户端接入；不要把 JSON 直接当作所有客户端通用的配置文件。MCP 服务使用本机 stdio。
 
@@ -51,13 +51,15 @@
 
 待前四步通过后，由机主明确选定发布平台、账号和一篇允许公开的新内容。创建包含「自动对外发布」的新 Agent 授权并更新客户端连接配置，额度可限制为 1、有效期 1 天。旧草稿授权按需撤销；撤销会取消其尚未提交的任务。
 
+每个平台先指定一个负责提交的客户端和一篇获准的新内容，同一篇不能交给多个 Agent 重复提交。只有实际测试的客户端×平台组合可标通过，六种组合的记录表见 [客户端接入说明](AGENT_CLIENTS.md)。
+
 本阶段使用另一篇内容，与上一步草稿区分。不要把同一草稿换一个 request_id 重投来试图切换模式；若继续使用原草稿，应在原工作台确认原任务，这只验证主人确认后的执行，不能单独证明 Agent 的自动发布权限。
 
 让 Agent 对这篇获准的新内容预检，以 mode=publish 提交一次，并每 3–5 秒查询原任务。保持 Mac 唤醒、SaraClick 和已配对浏览器运行。需要登录或验证码时由机主完成。
 
 通过标准：平台上只有对应的获准作品；账号、正文、图片顺序及数量正确，SaraClick 和 Agent 返回对应作品链接/ID及核实后的状态。queued、claimed、submitting 不等于成功；unknown 或 needs_attention 应核对原任务，不能自动重发。
 
-公众号和 Spotify 当前只能用平台草稿回执验收，不能写成公开发送成功。Instagram 需额外核对首次分享后的完整配文、换行、标签和图片；既有候选测试没有替代这一步。
+小红书需核对完整标题、正文、原生话题、图片数量/顺序、账号和真实作品回执。Instagram 需额外核对首次分享后的完整配文、换行、标签、图片顺序和裁切；如需人工补文，记录协助事实，不能算无协助通过。既有候选测试没有替代这一步。
 
 ## 6. 退出、重开及保留结果
 
