@@ -24,6 +24,8 @@ SaraClick 让你在自己的电脑绑定社交账号，并连接自己的 AI Age
 
 发布和排期执行期间请保持电脑唤醒、SaraClick 与浏览器运行。平台要求验证码或重新登录时，由账号主人处理。程序和 MCP 已打包，普通用户无需安装 Python 或 Node。
 
+M 芯片 Mac 首次使用可按 [安装与真实验收清单](MAC_APPLE_SILICON_ACCEPTANCE.md) 逐步检查，并分别记录安装、绑定、Agent 草稿和真实发布结果。
+
 ## Mac 首次打开
 
 M 系列 Mac 选择 macos-arm64；Intel Mac 选择 macos-x64。先将应用放入「应用程序」，再打开。当前候选包未进行 Apple 公证：如果系统提示无法验证开发者，核对下载来源和 SHA-256 后，可以按 [Apple 官方说明](https://support.apple.com/en-us/102445) 在「系统设置 → 隐私与安全性」中为此应用选择「仍要打开」。受公司管理的电脑可能需要管理员允许。
