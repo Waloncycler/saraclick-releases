@@ -4,7 +4,7 @@ SaraClick 让你在自己的电脑绑定社交账号，并连接自己的 AI Age
 
 此仓库只用于分发安装包及使用说明。产品源码保持私有，用户的账号、登录会话、凭据、历史任务和私人素材不会包含在安装包中。
 
-[下载当前候选 1.5.3 RC1](https://github.com/Waloncycler/saraclick-releases/releases/tag/v1.5.3-rc.1) · [全部版本](https://github.com/Waloncycler/saraclick-releases/releases)
+[下载当前候选 1.5.4 RC3](https://github.com/Waloncycler/saraclick-releases/releases/tag/v1.5.4-rc.3) · [全部版本](https://github.com/Waloncycler/saraclick-releases/releases)
 
 | 电脑 | 选择的包 |
 | --- | --- |
@@ -36,6 +36,10 @@ M 系列 Mac 选择 macos-arm64；Intel Mac 选择 macos-x64。先将应用放�
 
 ## 数据和更新
 
-Windows 数据目录：`%LOCALAPPDATA%/SaraClick`；Mac：`~/Library/Application Support/SaraClick`。升级前退出程序并备份自己的目录，再替换应用；重新启动 SaraClick 后，在原 Chrome/Edge 扩展管理页重新加载已有扩展，确认显示 1.5.3，再刷新工作台。保留原扩展和数据目录，无需重新导入账号。不要给其他用户复制自己的数据目录或浏览器 profile。
+Windows 数据目录：`%LOCALAPPDATA%/SaraClick`；Mac：`~/Library/Application Support/SaraClick`。个人数据与应用分开，升级时保留原目录，不给其他用户复制自己的数据或浏览器 profile。
+
+1.5.4 新增「账号与连接 → 版本与更新」，分别显示应用、扩展文件与当前浏览器实际版本。可检查稳定/候选渠道，自动选择电脑架构，并在后台下载、断点续传和校验安装包。下载完成仍需等发布任务结束后退出旧应用，再安装并重启新版；当前尚未启用整应用自动替换和启动失败回滚。
+
+扩展从应用提供的固定目录加载。完整新文件安装后，沿用原权限与发布状态检查，等待空闲再切换；浏览器真实回应一致才显示版本一致。遇到旧版本或更新失败，按面板提示重试或核对安装来源，不删除账号、配对资料或原发布记录。此前加载临时下载目录的用户需要迁入固定目录并连接一次，不能把更换 ZIP 当作浏览器已经升级。
 
 本地部署包当前未使用发布者证书，首次打开可能出现操作系统确认提示。不同平台的真实发布验收范围和已知限制以具体 Release 说明为准；自动化构建通过不等于所有社交平台均已完成真实发帖验证。
