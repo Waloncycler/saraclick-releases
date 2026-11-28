@@ -1,11 +1,13 @@
 # M 芯片 Mac：首次安装与真实验收
 
-适用于 SaraClick 1.5.1 RC1、另一台 Apple Silicon Mac。本轮使用 Claude、Codex、Antigravity，先验证小红书和 Instagram。本文是待执行的验收步骤，不是已完成的实机结果。
+适用于 SaraClick 1.5.2 RC1、另一台 Apple Silicon Mac。本轮使用 Claude、Codex、Antigravity，先验证小红书和 Instagram。本文是待执行的验收步骤，不是已完成的实机结果。
+
+已有旧版用户：退出 SaraClick 并保留自己的数据目录，替换应用后重新启动；在 Edge/Chrome 扩展管理页重新加载原 SaraClick 扩展，确认版本 1.5.2，再刷新工作台重试小红书关联。无需卸载扩展或删除已有公众号、抖音等账号。1.5.2 修复了新用户没有账号记录就无法开始小红书绑定的问题，真实登录与发布仍按下列步骤核验。
 
 ## 1. 安装与打开
 
 1. 在「关于本机」确认芯片为 Apple M 系列，macOS 为 13.5 或以上。使用已安装的 Chrome 或 Microsoft Edge。
-2. 下载 [macos-arm64 安装包](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.1-rc.1/SaraClick-1.5.1-macos-arm64.zip) 及 [SHA-256 校验文件](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.1-rc.1/SaraClick-1.5.1-macos-arm64.zip.sha256)。包摘要：`c8eef3bc73055e9791dc157d8083f95ca1a8f6ee509b48ebf73003d922137864`。
+2. 下载 [macos-arm64 安装包](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.2-rc.1/SaraClick-1.5.2-macos-arm64.zip) 及 [SHA-256 校验文件](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.2-rc.1/SaraClick-1.5.2-macos-arm64.zip.sha256)。包摘要：`0ccae0f6f66c3c9d29154e738ed322130a318f6cdb9a6b2bc2a126f0af46ab0e`。
 3. 解压，将 SaraClick.app 拖进「应用程序」再打开。应用、Node 与 MCP 都是 arm64 原生，无需 Rosetta、Python 或 Node 安装。
 4. 候选包未公证。如提示无法验证开发者，核对来源后按 [Apple 官方说明](https://support.apple.com/en-us/102445)，在「系统设置 → 隐私与安全性」为此应用选择「仍要打开」。记录遇到的提示；受管理电脑可能需要管理员处理。
 5. 在 SaraClick 窗口选择 Chrome 或 Edge，点击「打开工作台」。全新安装应看到空账号列表，而不是他人的账号或任务。
@@ -17,7 +19,7 @@
 ## 2. 加载扩展并绑定自己的账号
 
 1. 在 SaraClick 点击「打开扩展安装目录」。
-2. 在同一个浏览器打开 `chrome://extensions/` 或 `edge://extensions/`，开启开发者模式，加载刚打开的目录。确认扩展版本为 1.5.1。
+2. 在同一个浏览器打开 `chrome://extensions/` 或 `edge://extensions/`，开启开发者模式，加载刚打开的目录。确认扩展版本为 1.5.2。
 3. 返回工作台「账号与连接」，连接发布扩展，分别添加机主自己的小红书和 Instagram 账号。
 4. 由账号主人在平台页面完成登录和必要验证，再回到 SaraClick 核对账号身份及发布设备。
 
