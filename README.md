@@ -6,11 +6,13 @@ SaraClick 让你在自己的电脑绑定社交账号，并连接自己的 AI Age
 
 [下载当前候选 1.5.5 RC5](https://github.com/Waloncycler/saraclick-releases/releases/tag/v1.5.5-rc.5) · [全部版本](https://github.com/Waloncycler/saraclick-releases/releases)
 
-| 电脑 | 选择的包 |
-| --- | --- |
-| Windows 64 位（Intel/AMD） | windows-x64 |
-| Mac M 系列 / Apple Silicon | macos-arm64（原生，不依赖 Rosetta） |
-| Intel Mac | macos-x64 |
+| 电脑 | 完整安装包 | 校验文件 |
+| --- | --- | --- |
+| M 芯片 Mac / Apple Silicon | [下载 ZIP](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.5-rc.5/SaraClick-1.5.5-macos-arm64.zip) | [SHA-256](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.5-rc.5/SaraClick-1.5.5-macos-arm64.zip.sha256) |
+| Intel Mac | [下载 ZIP](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.5-rc.5/SaraClick-1.5.5-macos-x64.zip) | [SHA-256](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.5-rc.5/SaraClick-1.5.5-macos-x64.zip.sha256) |
+| Windows x64（Intel/AMD） | [下载 ZIP](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.5-rc.5/SaraClick-1.5.5-windows-x64.zip) | [SHA-256](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.5-rc.5/SaraClick-1.5.5-windows-x64.zip.sha256) |
+
+普通用户下载上表完整安装包；`SaraClickRuntime-*` 与 `release-manifest.json` 由应用更新器使用。M 芯片 Mac 包为 arm64 原生，约 110 MB，无需 Rosetta、Python 或 Node。
 
 运行要求：macOS 13.5 或更高版本；Windows 10/11 x64。Mac 下限由随包运行时决定，参见 [Node 官方支持表](https://github.com/nodejs/node/blob/v24.x/BUILDING.md#platform-list)。本版没有 Windows ARM 原生包。
 
@@ -25,6 +27,22 @@ SaraClick 让你在自己的电脑绑定社交账号，并连接自己的 AI Age
 发布和排期执行期间请保持电脑唤醒、SaraClick 与浏览器运行。平台要求验证码或重新登录时，由账号主人处理。程序和 MCP 已打包，普通用户无需安装 Python 或 Node。
 
 M 芯片 Mac 首次使用可按 [安装与真实验收清单](MAC_APPLE_SILICON_ACCEPTANCE.md) 逐步检查，并分别记录安装、绑定、Agent 草稿和真实发布结果。
+
+## M 芯片 Mac：升级并复测小红书
+
+适用于从 1.5.1–1.5.4 首次迁入的用户。本版包含小红书首次关联修复；本轮先验证扩展更新和账号绑定，不需要发帖。
+
+1. 等当前发布任务结束并确认结果，退出旧 SaraClick，不只是关闭工作台网页。保留原账号和数据目录。
+2. 下载上表的 M 芯片 Mac 完整包并核对校验文件。解压后只有一个 `SaraClick.app` 图标是正常的；拖到「应用程序」替换旧应用，再从这个位置打开，选择 Edge 打开工作台。
+3. 在 SaraClick 窗口点击「打开扩展安装目录」。在 Edge 地址栏输入 `edge://extensions/`，开启开发者模式，在原 SaraClick 扩展卡片点击「重新加载」，确认版本为 **1.5.5**。
+4. 刷新工作台，进入「账号与连接 → 版本与更新」，确认**应用和当前浏览器扩展均为 1.5.5**。只下载、解压或替换文件不等于浏览器已更新。
+5. 在「账号与连接」连接发布扩展，添加小红书账号，由本人完成平台登录。返回工作台核对账号身份，确认关联的是自己的正确账号。
+
+**Edge 仍显示旧版：** 先确认启动的是新版应用，并核对「打开扩展安装目录」中的 `manifest.json` 为 1.5.5。Mac 固定扩展目录为 `~/Library/Application Support/SaraClick/extension`；再核对原扩展的实际加载路径。如果它来自旧下载目录，先停用旧条目，再「加载解压缩的扩展」选择新版固定目录，返回工作台重新连接；确认新版可用后再移除旧条目。不要同时启用两份，也不要删除个人数据目录。
+
+**复测反馈：** 提供「版本与更新」页面和小红书关联结果截图；失败时保留完整报错文字。仅看见平台昵称或登录页面，不算身份关联已确认。客户 M4 + Edge 的真实绑定结果仍待本轮复验，自动化检查不代替这一步。
+
+1.5.1–1.5.4 需上述一次手动迁入；之后的兼容版本可在工作台点击「更新并重启」。首次打开被系统阻止时，参见 [Mac 首次打开处理](https://github.com/Waloncycler/saraclick-releases/blob/master/MAC_APPLE_SILICON_ACCEPTANCE.md)。当前没有 Apple 公证，安装警告尚未消除。
 
 ## Mac 首次打开
 
