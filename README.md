@@ -4,7 +4,7 @@ SaraClick 让你在自己的电脑绑定社交账号，并连接自己的 AI Age
 
 此仓库只用于分发安装包及使用说明。产品源码保持私有，用户的账号、登录会话、凭据、历史任务和私人素材不会包含在安装包中。
 
-[下载当前候选 1.5.2 RC1](https://github.com/Waloncycler/saraclick-releases/releases/tag/v1.5.2-rc.1) · [全部版本](https://github.com/Waloncycler/saraclick-releases/releases)
+[下载当前候选 1.5.3 RC1](https://github.com/Waloncycler/saraclick-releases/releases/tag/v1.5.3-rc.1) · [全部版本](https://github.com/Waloncycler/saraclick-releases/releases)
 
 | 电脑 | 选择的包 |
 | --- | --- |
@@ -28,7 +28,7 @@ M 芯片 Mac 首次使用可按 [安装与真实验收清单](MAC_APPLE_SILICON_
 
 ## Mac 首次打开
 
-M 系列 Mac 选择 macos-arm64；Intel Mac 选择 macos-x64。先将应用放入「应用程序」，再打开。当前候选包未进行 Apple 公证：如果系统提示无法验证开发者，核对下载来源和 SHA-256 后，可以按 [Apple 官方说明](https://support.apple.com/en-us/102445) 在「系统设置 → 隐私与安全性」中为此应用选择「仍要打开」。受公司管理的电脑可能需要管理员允许。
+M 系列 Mac 选择 macos-arm64；Intel Mac 选择 macos-x64。先将应用放入「应用程序」，再打开。当前候选包未进行 Apple 公证：如果系统提示无法验证开发者，核对下载来源和 SHA-256 后，可以按 [Apple 官方说明](https://support.apple.com/en-us/102445) 在「系统设置 → 隐私与安全性 → 安全性」中为此应用确认打开；macOS 27 先点「打开」，再点「仍要打开」。受公司管理的电脑由管理员处理。个人 Mac 没有该入口时，见 [详细首次打开步骤](MAC_APPLE_SILICON_ACCEPTANCE.md)。本版已更换品牌图标并修正 Mac 应用版本信息，这些变更不替代 Developer ID 签名和公证；公证用于直接分发也无需上架 App Store。
 
 ## Agent 接入
 
@@ -36,6 +36,6 @@ M 系列 Mac 选择 macos-arm64；Intel Mac 选择 macos-x64。先将应用放�
 
 ## 数据和更新
 
-Windows 数据目录：`%LOCALAPPDATA%/SaraClick`；Mac：`~/Library/Application Support/SaraClick`。升级前退出程序并备份自己的目录，再替换应用；重新启动 SaraClick 后，在原 Chrome/Edge 扩展管理页重新加载已有扩展，确认显示 1.5.2，再刷新工作台。保留原扩展和数据目录，无需重新导入账号。不要给其他用户复制自己的数据目录或浏览器 profile。
+Windows 数据目录：`%LOCALAPPDATA%/SaraClick`；Mac：`~/Library/Application Support/SaraClick`。升级前退出程序并备份自己的目录，再替换应用；重新启动 SaraClick 后，在原 Chrome/Edge 扩展管理页重新加载已有扩展，确认显示 1.5.3，再刷新工作台。保留原扩展和数据目录，无需重新导入账号。不要给其他用户复制自己的数据目录或浏览器 profile。
 
 本地部署包当前未使用发布者证书，首次打开可能出现操作系统确认提示。不同平台的真实发布验收范围和已知限制以具体 Release 说明为准；自动化构建通过不等于所有社交平台均已完成真实发帖验证。
