@@ -1,25 +1,46 @@
 # M 芯片 Mac：首次安装与真实验收
 
-适用于 SaraClick 1.5.2 RC1、另一台 Apple Silicon Mac。本轮使用 Claude、Codex、Antigravity，先验证小红书和 Instagram。本文是待执行的验收步骤，不是已完成的实机结果。
+适用于 SaraClick 1.5.3 RC1、另一台 Apple Silicon Mac。本轮使用 Claude、Codex、Antigravity，先验证小红书和 Instagram。本文是待执行的验收步骤，不是已完成的实机结果。
 
-已有旧版用户：退出 SaraClick 并保留自己的数据目录，替换应用后重新启动；在 Edge/Chrome 扩展管理页重新加载原 SaraClick 扩展，确认版本 1.5.2，再刷新工作台重试小红书关联。无需卸载扩展或删除已有公众号、抖音等账号。1.5.2 修复了新用户没有账号记录就无法开始小红书绑定的问题，真实登录与发布仍按下列步骤核验。
+已有旧版用户：退出 SaraClick 并保留自己的数据目录，替换应用后重新启动；在 Edge/Chrome 扩展管理页重新加载原 SaraClick 扩展，确认版本 1.5.3，再刷新工作台重试小红书关联。无需卸载扩展或删除已有公众号、抖音等账号。本版包含 1.5.2 的小红书关联修复，解决了新用户没有账号记录就无法开始小红书绑定的问题，真实登录与发布仍按下列步骤核验。
 
 ## 1. 安装与打开
 
 1. 在「关于本机」确认芯片为 Apple M 系列，macOS 为 13.5 或以上。使用已安装的 Chrome 或 Microsoft Edge。
-2. 下载 [macos-arm64 安装包](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.2-rc.1/SaraClick-1.5.2-macos-arm64.zip) 及 [SHA-256 校验文件](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.2-rc.1/SaraClick-1.5.2-macos-arm64.zip.sha256)。包摘要：`0ccae0f6f66c3c9d29154e738ed322130a318f6cdb9a6b2bc2a126f0af46ab0e`。
+2. 下载 [macos-arm64 安装包](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.3-rc.1/SaraClick-1.5.3-macos-arm64.zip) 及 [SHA-256 校验文件](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.3-rc.1/SaraClick-1.5.3-macos-arm64.zip.sha256)。包摘要：`2321a8d3cbd1f966e8a680ed104e1444749d9d24c520e78fcaa8e1f639cf1f5d`。
 3. 解压后只有一个 SaraClick 图标是正常的：这是完整的 `SaraClick.app` 应用包，Finder 可能隐藏 `.app` 后缀，不会显示成普通文件夹。将它拖进「应用程序」再打开；升级用户先退出旧应用再替换，保留原数据目录。应用、Node 与 MCP 都是 arm64 原生，无需 Rosetta、Python 或 Node 安装。
-4. 当前包尚未完成 Apple 公证。核对下载来源和 SHA-256 后，若提示「Apple 无法验证 SaraClick 是否包含可能危害 Mac 安全或泄露隐私的恶意软件」，先点弹窗中的「完成」，然后打开「系统设置 → 隐私与安全性」，向下滚动到 SaraClick 被阻止的说明，点「仍要打开」，按系统要求确认身份，最后在再次出现的提示中点「打开」。**“仍要打开”在系统设置里，不在原来的弹窗里。** 详见 [Apple 官方步骤](https://support.apple.com/zh-cn/102445)。若没有看到 SaraClick 的说明，先重新尝试打开应用，再回到设置页面查看；受管理电脑可能需要管理员处理。
+4. 当前包尚未完成 Apple 公证。核对下载来源和 SHA-256 后，若提示「Apple 无法验证 SaraClick 是否包含可能危害 Mac 安全或泄露隐私的恶意软件」，先点弹窗中的「完成」，然后打开「系统设置 → 隐私与安全性」，向下滚动到「安全性」。macOS 27 先点「打开」，再点「仍要打开」；其他版本可能直接显示「仍要打开」，按系统要求确认身份，最后在再次出现的提示中点「打开」。**“仍要打开”在系统设置里，不在原来的弹窗里。** 详见 [Apple 官方步骤](https://support.apple.com/zh-cn/102445)。该入口通常只在尝试打开应用后约一小时内可用，参见 [Apple macOS 27 指南](https://support.apple.com/en-euro/guide/mac-help/mh40617/27/mac/27)。受管理电脑由其管理员处理。
 5. 在 SaraClick 窗口选择 Chrome 或 Edge，点击「打开工作台」。全新安装应看到空账号列表，而不是他人的账号或任务。
+
+如果个人 Mac 仍没有该入口，且确认下载来自本发布页、SHA-256 与上文一致，机主可以选择只移除 SaraClick 的下载隔离标记。先把应用放入「应用程序」，再在「终端」依次执行：
+
+```sh
+xattr -dr com.apple.quarantine "/Applications/SaraClick.app"
+open "/Applications/SaraClick.app"
+```
+
+这只针对指定应用包，不关闭全机 Gatekeeper。提示找不到文件时核对应用位置；权限不足时保留报错，不盲目添加 sudo。系统明确报告检测到恶意软件或包损坏时，停止打开并核查下载包。
+
+1.5.3 已统一扩展、网页和桌面图标，Mac 应用版本也显示为 1.5.3；这些改动不会替代 Apple 公证。当前无公证候选需要人工确认，顺畅直接分发仍需 Developer ID 签名和公证，无需上架 App Store。真实客户 Mac 首次启动和绑定仍待核验。
 
 若这台电脑已有 SaraClick 或提示端口被占用，先核对现有安装；不要为验收删除资料、覆盖数据目录或随意结束占用进程。
 
 通过标准：应用正常启动，所选浏览器可打开工作台，未导入任何其他人的业务数据。
 
+## 更新后仍显示旧版本
+
+先确认版本显示的位置。Edge/Chrome 扩展页的版本属于浏览器当前加载的扩展，不会因为只解压了新 ZIP 就自动更新。
+
+退出正在运行的旧 SaraClick，将新 `SaraClick.app` 替换到「应用程序」，从这个位置打开。新应用启动后，点击「打开扩展安装目录」，核对其中 `manifest.json` 的 version 为 `1.5.3`。默认目录是 `~/Library/Application Support/SaraClick/extension`。
+
+回到 `edge://extensions/` 或 `chrome://extensions/`，在**原 SaraClick 扩展卡片**点击重新加载，确认显示 1.5.3，再刷新工作台。若仍显示旧版，查看卡片「详情」里的加载路径：它可能仍指向旧下载目录。此时先记录原路径和卡片，不删除数据库、账号或浏览器资料，也不同时加载两份扩展。
+
+Finder「显示简介」中，新包的应用版本同样应为 1.5.3。若新应用提示 8088/5174 端口占用，先退出原应用；不要随意结束不明进程。
+
 ## 2. 加载扩展并绑定自己的账号
 
 1. 等 SaraClick 应用窗口出现后，点击「打开扩展安装目录」。真正的扩展文件夹在这里，里面有 `manifest.json`；默认位置为 `~/Library/Application Support/SaraClick/extension`，不要在 Edge 中选择 `SaraClick.app` 图标。
-2. 在同一个浏览器打开 `chrome://extensions/` 或 `edge://extensions/`。新用户开启开发者模式并加载刚打开的目录；已有 SaraClick 扩展的升级用户重新加载原扩展。确认扩展版本为 1.5.2，再刷新工作台。
+2. 在同一个浏览器打开 `chrome://extensions/` 或 `edge://extensions/`。新用户开启开发者模式并加载刚打开的目录；已有 SaraClick 扩展的升级用户重新加载原扩展。确认扩展版本为 1.5.3，再刷新工作台。
 3. 返回工作台「账号与连接」，连接发布扩展，分别添加机主自己的小红书和 Instagram 账号。
 4. 由账号主人在平台页面完成登录和必要验证，再回到 SaraClick 核对账号身份及发布设备。
 
