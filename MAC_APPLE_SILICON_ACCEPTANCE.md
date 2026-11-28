@@ -8,8 +8,8 @@
 
 1. 在「关于本机」确认芯片为 Apple M 系列，macOS 为 13.5 或以上。使用已安装的 Chrome 或 Microsoft Edge。
 2. 下载 [macos-arm64 安装包](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.2-rc.1/SaraClick-1.5.2-macos-arm64.zip) 及 [SHA-256 校验文件](https://github.com/Waloncycler/saraclick-releases/releases/download/v1.5.2-rc.1/SaraClick-1.5.2-macos-arm64.zip.sha256)。包摘要：`0ccae0f6f66c3c9d29154e738ed322130a318f6cdb9a6b2bc2a126f0af46ab0e`。
-3. 解压，将 SaraClick.app 拖进「应用程序」再打开。应用、Node 与 MCP 都是 arm64 原生，无需 Rosetta、Python 或 Node 安装。
-4. 候选包未公证。如提示无法验证开发者，核对来源后按 [Apple 官方说明](https://support.apple.com/en-us/102445)，在「系统设置 → 隐私与安全性」为此应用选择「仍要打开」。记录遇到的提示；受管理电脑可能需要管理员处理。
+3. 解压后只有一个 SaraClick 图标是正常的：这是完整的 `SaraClick.app` 应用包，Finder 可能隐藏 `.app` 后缀，不会显示成普通文件夹。将它拖进「应用程序」再打开；升级用户先退出旧应用再替换，保留原数据目录。应用、Node 与 MCP 都是 arm64 原生，无需 Rosetta、Python 或 Node 安装。
+4. 当前包尚未完成 Apple 公证。核对下载来源和 SHA-256 后，若提示「Apple 无法验证 SaraClick 是否包含可能危害 Mac 安全或泄露隐私的恶意软件」，先点弹窗中的「完成」，然后打开「系统设置 → 隐私与安全性」，向下滚动到 SaraClick 被阻止的说明，点「仍要打开」，按系统要求确认身份，最后在再次出现的提示中点「打开」。**“仍要打开”在系统设置里，不在原来的弹窗里。** 详见 [Apple 官方步骤](https://support.apple.com/zh-cn/102445)。若没有看到 SaraClick 的说明，先重新尝试打开应用，再回到设置页面查看；受管理电脑可能需要管理员处理。
 5. 在 SaraClick 窗口选择 Chrome 或 Edge，点击「打开工作台」。全新安装应看到空账号列表，而不是他人的账号或任务。
 
 若这台电脑已有 SaraClick 或提示端口被占用，先核对现有安装；不要为验收删除资料、覆盖数据目录或随意结束占用进程。
@@ -18,8 +18,8 @@
 
 ## 2. 加载扩展并绑定自己的账号
 
-1. 在 SaraClick 点击「打开扩展安装目录」。
-2. 在同一个浏览器打开 `chrome://extensions/` 或 `edge://extensions/`，开启开发者模式，加载刚打开的目录。确认扩展版本为 1.5.2。
+1. 等 SaraClick 应用窗口出现后，点击「打开扩展安装目录」。真正的扩展文件夹在这里，里面有 `manifest.json`；默认位置为 `~/Library/Application Support/SaraClick/extension`，不要在 Edge 中选择 `SaraClick.app` 图标。
+2. 在同一个浏览器打开 `chrome://extensions/` 或 `edge://extensions/`。新用户开启开发者模式并加载刚打开的目录；已有 SaraClick 扩展的升级用户重新加载原扩展。确认扩展版本为 1.5.2，再刷新工作台。
 3. 返回工作台「账号与连接」，连接发布扩展，分别添加机主自己的小红书和 Instagram 账号。
 4. 由账号主人在平台页面完成登录和必要验证，再回到 SaraClick 核对账号身份及发布设备。
 
